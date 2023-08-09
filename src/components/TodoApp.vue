@@ -1,4 +1,5 @@
 <template>
+    <TodoHeader />
     <button @click="clearTodos">Clear</button>
     <TodoForm @addTodo="addTodo" />
     <TodoList v-if="todos.length" :todos="todos" @removeTodo="removeTodo" />
@@ -6,6 +7,7 @@
 
 <script setup lang="ts">
 import { Ref, ref } from "vue"
+import TodoHeader from "@/components/TodoHeader.vue"
 import TodoForm from "@/components/TodoForm.vue"
 import TodoList from "@/components/TodoList.vue"
 
