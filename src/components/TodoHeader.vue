@@ -8,11 +8,23 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, ref } from "vue"
 import PlusIcon from "@/components/icons/PlusIcon.vue"
+import { Todo } from "@/types/Todo"
 
 const emit = defineEmits(["addTodo"])
 
+const baseTodo: Ref<Todo> = ref({
+    title: "",
+    description: "",
+    creationDate: Date.now(),
+    priority: "Medium",
+    isEditing: true,
+    isCompleted: false,
+    id: new Date().getTime(),
+})
+
 function addTodo() {
-    emit("addTodo")
+    emit("addTodo", baseTodo.value)
 }
 </script>

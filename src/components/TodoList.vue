@@ -1,17 +1,15 @@
 <template>
-    <ul>
-        <div v-for="(todo, index) in todos" :key="index" class="my-2 flex items-center gap-x-2">
-            <li>
-                {{ todo }}
-            </li>
-            <button @click="removeTodo(index)">Remove</button>
-        </div>
-    </ul>
+    <div v-for="todo in todos" :key="todo.id" class="my-2 flex items-center gap-x-2">
+        <BaseTodo v-if="todo.id" :todo="todo" @removeTodo="removeTodo" />
+    </div>
 </template>
 
 <script setup lang="ts">
+import BaseTodo from "@/components/base-components/BaseTodo.vue"
+import { Todo } from "@/types/Todo"
+
 interface Props {
-    todos: string[]
+    todos: Todo[]
 }
 
 defineProps<Props>()
